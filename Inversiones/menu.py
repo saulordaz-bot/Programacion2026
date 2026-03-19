@@ -5,7 +5,6 @@ Created on March, 2026
 '''
 
 from inversion import Inversion
-from reporte import Reporte
 from usuario import Usuario
 
 
