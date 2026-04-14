@@ -5,18 +5,18 @@ Created on Feb, 2019
 '''
 class Cuenta:
 
-	# La clase ya tiene más de un atributo.
-	# En este caso, cambia la cantidad de argumentos que el 
-	# constructor recibe
-	def __init__( self, ctd, t ):
-		self.cantidad = ctd
-		self.tipo = t
+    def __init__(self, saldo, tipo, titular):
+        self.saldo = saldo
+        self.tipo = tipo
+        self.titular = titular
 
-	def imprimirDetalles( self ):
-		# esta salida sólo es para
-		# visualizar el momento de la
-		# llamada del método
-		print ( "Desde el método" ) 
-		
-		print ( "cantidad::", self.cantidad )
-		print ( "tipo::", self.tipo )
+    def depositar(self, cantidad):
+        self.saldo += cantidad
+        print("Depósito realizado. Nuevo saldo:", self.saldo)
+
+    def retirar(self, cantidad):
+        if cantidad <= self.saldo:
+            self.saldo -= cantidad
+            print("Retiro realizado. Nuevo saldo:", self.saldo)
+        else:
+            print("Fondos insuficientes")
