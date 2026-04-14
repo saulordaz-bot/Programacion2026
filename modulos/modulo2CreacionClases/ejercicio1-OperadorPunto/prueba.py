@@ -1,3 +1,8 @@
+''' 
+Created on Febrero,2026
+@author: SaulOG
+
+'''
 from cuenta import Cuenta
 
 # Primer objeto
