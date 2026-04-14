@@ -12,32 +12,34 @@ Se encarga de los cálculos de una inversión
 class Inversion:
 
     def __init__(self, capital, tasa):
-        self.capital = capital
-        self.tasa = tasa
+        self.__capital = capital   # privado
+        self.__tasa = tasa         # privado
+
+    # GETTERS
+    def getCapital(self):
+        return self.__capital
+
+    def getTasa(self):
+        return self.__tasa
+
+    # SETTERS
+    def setCapital(self, capital):
+        self.__capital = capital
+
+    def setTasa(self, tasa):
+        self.__tasa = tasa
 
     def calcularGanancia(self):
-        return self.capital * (self.tasa / 100)
+        return self.__capital * (self.__tasa / 100)
 
     def montoFinal(self):
-        return self.capital + self.calcularGanancia()
-
-    def compararInversion(self, otraInversion):
-        # Método compuesto porque usa otros métodos
-        
-        mi_monto = self.montoFinal()
-        otro_monto = otraInversion.montoFinal()
-
-        if mi_monto > otro_monto:
-            diferencia = mi_monto - otro_monto
-            return f"La inversión 1 es mejor por {diferencia}"
-        elif mi_monto < otro_monto:
-            diferencia = otro_monto - mi_monto
-            return f"La inversión 2 es mejor por {diferencia}"
-        else:
-            return "Ambas inversiones son iguales"
+        return self.__capital + self.calcularGanancia()
 
     def __str__(self):
-        return (f"Capital: {self.capital}\n"
+        return (f"Capital: {self.__capital}\n"
+                f"Tasa: {self.__tasa}%\n"
+                f"Ganancia: {self.calcularGanancia()}\n"
+                f"Monto final: {self.montoFinal()}")
                 f"Tasa: {self.tasa}%\n"
                 f"Ganancia: {self.calcularGanancia()}\n"
                 f"Monto final: {self.montoFinal()}")
