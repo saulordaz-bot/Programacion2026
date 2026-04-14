@@ -5,6 +5,5 @@ Created on Febrero,2019
 '''
 class Cuenta:
 
-	# por ahora nuestra clase sólo tiene un atributo.
-	def __init__(self, valor):
-		self.cantidad = valor
+    def __init__(self, saldo):
+        self.saldo = saldo
