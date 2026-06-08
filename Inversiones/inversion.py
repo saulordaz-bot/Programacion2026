@@ -1,19 +1,24 @@
+
 '''
 Created on March, 2026
 @author: SaulO
-
 '''
 
-'''
-Clase Inversion
-Se encarga de los cálculos de una inversión
-'''
+from datetime import datetime
 
 class Inversion:
 
     def __init__(self, capital, tasa):
-        self.__capital = capital   # privado
-        self.__tasa = tasa         # privado
+
+        if capital <= 0:
+            raise ValueError("El capital debe ser mayor que cero.")
+
+        if tasa <= 0:
+            raise ValueError("La tasa debe ser mayor que cero.")
+
+        self.__capital = capital
+        self.__tasa = tasa
+        self.__fecha = datetime.now()
 
     # GETTERS
     def getCapital(self):
@@ -22,12 +27,17 @@ class Inversion:
     def getTasa(self):
         return self.__tasa
 
+    def getFecha(self):
+        return self.__fecha
+
     # SETTERS
     def setCapital(self, capital):
-        self.__capital = capital
+        if capital > 0:
+            self.__capital = capital
 
     def setTasa(self, tasa):
-        self.__tasa = tasa
+        if tasa > 0:
+            self.__tasa = tasa
 
     def calcularGanancia(self):
         return self.__capital * (self.__tasa / 100)
@@ -36,10 +46,9 @@ class Inversion:
         return self.__capital + self.calcularGanancia()
 
     def __str__(self):
-        return (f"Capital: {self.__capital}\n"
-                f"Tasa: {self.__tasa}%\n"
-                f"Ganancia: {self.calcularGanancia()}\n"
-                f"Monto final: {self.montoFinal()}")
-                f"Tasa: {self.tasa}%\n"
-                f"Ganancia: {self.calcularGanancia()}\n"
-                f"Monto final: {self.montoFinal()}")
+        return (
+            f"Fecha: {self.__fecha.strftime('%d/%m/%Y %H:%M:%S')}\n"
+            f"Capital: {self.__capital}\n"
+            f"Tasa: {self.__tasa}%\n"
+            f"Ganancia: {self.calcularGanancia():.2f}\n"
+            f"Monto final: {self.montoFinal():.2f}")
